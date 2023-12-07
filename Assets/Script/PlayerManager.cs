@@ -46,11 +46,5 @@ namespace Broadcast.JES
                 _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
             }
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
