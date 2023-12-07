@@ -81,7 +81,7 @@ namespace Broadcast.JES
             if (PhotonNetwork.IsMasterClient)
                 PhotonNetwork.Instantiate(this.StreamerPrefab.name, new Vector3(0f, 2.5f, 12.5f), Quaternion.identity, 0);
             else
-                PhotonNetwork.Instantiate(this.ViewerPrefab.name, new Vector3(0f, 5f, 22.5f), Quaternion.Euler(0f, 180f, 0f), 0);
+                PhotonNetwork.Instantiate(this.ViewerPrefab.name, new Vector3(0f, 7.5f, 22.5f), Quaternion.Euler(0f, 180f, 0f), 0);
         }
         #endregion
         #region Public Methods
