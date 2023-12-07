@@ -66,31 +66,30 @@ namespace Broadcast.JES
         public void SendMsg()
         {
             string msg = PhotonNetwork.NickName + ": " + ChatInput.text;
-            photonView.RPC("ChatRPC", RpcTarget.All, msg);
+            while (msg.Length > 0)
+            {
+                if (msg.Length < 30)
+                {
+                    photonView.RPC("ChatRPC", RpcTarget.All, msg);
+                    msg = "";
+                }
+                else
+                {
+                    photonView.RPC("ChatRPC", RpcTarget.All, msg.Substring(0,30));
+                    msg= msg.Substring(30);
+                }
+            }
             ChatInput.text = "";
         }
 
         [PunRPC]
         void ChatRPC(string msg)
         {
-            for(int i = ChatText.Length-1;i >0; i--)
-            {
-                ChatText[i].text = ChatText[i-1].text;
-            }
-            ChatText[0].text=msg;
-
-            //for (int i = 0; i < ChatText.Length; i++)
-            //{
-            //    if (ChatText[i].text == "")
-            //    {
-            //        ChatText[i].text = msg;
-            //        return;
-            //    }
-
-            //}
-
-            //for (int i = 1; i < ChatText.Length; i++) ChatText[i - 1].text = ChatText[i].text;
-            //ChatText[ChatText.Length - 1].text = msg;
+                for (int i = ChatText.Length - 1; i > 0; i--)
+                {
+                    ChatText[i].text = ChatText[i - 1].text;
+                }
+                ChatText[0].text = msg;
         }
 
         #endregion
