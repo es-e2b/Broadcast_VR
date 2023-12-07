@@ -209,5 +209,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ffbd297307bfd04abb4327911c4d03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenOffset: {x: 0, y: 30, z: 0}
+  screenOffset: {x: 0, y: 15, z: 0}
   playerNameText: {fileID: 3819736574335978665}

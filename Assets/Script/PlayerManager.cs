@@ -9,13 +9,12 @@ namespace Broadcast.JES
     {
         #region Public Fields
 
-        [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
-        public static GameObject LocalPlayerInstance;
+        [Tooltip("내 고유 플레이어 프리팹")]
+        public static PlayerManager LocalPlayerInstance;
+        public Camera LocalPlayerCamera;
 
         #endregion
         #region Private Fields
-        [SerializeField]
-        private Camera LocalPlayerCamera;
 
         [Tooltip("플레이어 UI 프리팹을 삽입")]
         [SerializeField]
@@ -25,19 +24,25 @@ namespace Broadcast.JES
         #region MonoBehaviour Callbacks
         public void Awake()
         {
+            // 플레이어 인스턴스가 내 인스턴스일 때, LoaclPlayerInstance 변수에 저장 및 카메라 렌더링 순위+
             if (photonView.IsMine)
             {
-                LocalPlayerInstance = gameObject;
+                LocalPlayerInstance = this;
                 LocalPlayerCamera.depth = 1;
             }
         }
         #endregion
         void Start()
         {
-            if (playerUiPrefab != null)
+            // 플레이어 인스턴스가 생성될 때 닉네임 UI 생성. 단, 내 플레이어 객체는 생성하지 않음.
+            if (playerUiPrefab != null && !photonView.IsMine)
             {
                 Debug.Log("UI 생성");
+
+                // Player UI 생성. 네트워크에 생성하는 것이 아니라, 내 게임 화면에서만 생성합니다.
                 GameObject _uiGo = Instantiate(playerUiPrefab);
+                // PlayerUI 인스턴스에 SetTarget(this) 함수를 실행하게 만듭니다. SetTarget(this) 메서드는 이 인스턴스를 타겟으로 설정하게 만듭니다.
+                // 이후 UI 인스턴스는 타겟을 기준으로 화면에 렌더링합니다.
                 _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
             }
         }
