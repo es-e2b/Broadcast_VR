@@ -16,6 +16,10 @@ namespace Broadcast.JES
         #region Private Fields
         [SerializeField]
         private Camera LocalPlayerCamera;
+
+        [Tooltip("플레이어 UI 프리팹을 삽입")]
+        [SerializeField]
+        private GameObject playerUiPrefab;
         #endregion
 
         #region MonoBehaviour Callbacks
@@ -30,7 +34,12 @@ namespace Broadcast.JES
         #endregion
         void Start()
         {
-
+            if (playerUiPrefab != null)
+            {
+                Debug.Log("UI 생성");
+                GameObject _uiGo = Instantiate(playerUiPrefab);
+                _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+            }
         }
 
         // Update is called once per frame
