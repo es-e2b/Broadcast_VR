@@ -149,6 +149,7 @@ namespace Broadcast.JES
                 joinPanel.SetActive(false);
                 titlePanel.SetActive(false);
                 nicknamePanel.SetActive(false);
+                GetInputText();
                 PhotonNetwork.JoinRandomRoom();
             }
         }
