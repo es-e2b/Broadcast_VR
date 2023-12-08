@@ -64,7 +64,7 @@ namespace Broadcast.JES
             }
 
             // 플레이어 인스턴스가 생성될 때 슈퍼챗 UI 생성. 단, 내 플레이어 객체는 생성하지 않음.
-            if (superChatUiPrefab != null && !photonView.IsMine)
+            if (superChatUiPrefab != null)
             {
                 Debug.Log("UI 생성");
 
