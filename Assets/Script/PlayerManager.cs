@@ -31,7 +31,7 @@ namespace Broadcast.JES
         public void SuperChat(string text, int sender)
         {
             Debug.Log("수퍼챗 RPC 호출" + text + " " + sender);
-            if (this.photonView.ViewID == sender)
+            if (this.photonView.ViewID == sender && !photonView.IsMine)
             {
                 _superChatUiGo.GetComponent<SuperChatUI>().SuperChat(text);
             }
