@@ -2,6 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ namespace Broadcast.JES
         public Text[] ChatText;
         public InputField ChatInput;
         public GameObject chatPanel;
+        public static PlayerManager LocalPlayerInstance;
         #endregion
         #region Private Fields
         private bool chatVisible = false;
@@ -36,11 +38,18 @@ namespace Broadcast.JES
                 chatPanel.SetActive(chatVisible);
             }
 
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 if (chatVisible == false)
                     return;
-                SendMsg();
+
+                string text=ChatInput.text;
+                if (text.Substring(0,1).Equals("/"))
+                {
+                    text = ChatInput.text.Substring(1);
+                    SuperChat(text);
+                }
+                SendMsg(text);
             }
         }
         #endregion
@@ -63,9 +72,9 @@ namespace Broadcast.JES
             photonView.RPC("ChatRPC", RpcTarget.All, "<color=yellow>" + otherPlayer.NickName + "¥‘¿Ã ≈¿Â«œºÃΩ¿¥œ¥Ÿ</color>");
         }
 
-        public void SendMsg()
+        public void SendMsg(string text)
         {
-            string msg = PhotonNetwork.NickName + ": " + ChatInput.text;
+            string msg = PhotonNetwork.NickName + ": "+text;
             while (msg.Length > 0)
             {
                 if (msg.Length < 30)
@@ -80,6 +89,23 @@ namespace Broadcast.JES
                 }
             }
             ChatInput.text = "";
+        }
+        public void SuperChat(string text)
+        {
+            string msg = text;
+            while (msg.Length > 0)
+            {
+                if (msg.Length < 10)
+                {
+                    LocalPlayerInstance.photonView.RPC("SuperChat", RpcTarget.All, msg, LocalPlayerInstance.photonView.ViewID);
+                    msg = "";
+                }
+                else
+                {
+                    LocalPlayerInstance.photonView.RPC("SuperChat", RpcTarget.All, msg.Substring(0,10), LocalPlayerInstance.photonView.ViewID);
+                    msg = msg.Substring(10);
+                }
+            }
         }
 
         [PunRPC]

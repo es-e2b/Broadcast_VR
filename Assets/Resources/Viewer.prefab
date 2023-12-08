@@ -4047,6 +4047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocalPlayerCamera: {fileID: 9014170783809206330}
   playerUiPrefab: {fileID: 8665498669071924799, guid: 2989edcaef469bf428c2d3ea8fd69c83, type: 3}
+  superChatUiPrefab: {fileID: 8665498669071924799, guid: 9ec466b95ce289649843fe4d78b1c229, type: 3}
 --- !u!114 &7037745766841420791
 MonoBehaviour:
   m_ObjectHideFlags: 0
