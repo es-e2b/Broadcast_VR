@@ -39,9 +39,11 @@ MonoBehaviour:
   - ClickRpc
   - DestroyRpc
   - HeresWhy
+  - ChatRPC
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - SuperChat
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
