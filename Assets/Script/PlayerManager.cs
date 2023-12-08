@@ -64,13 +64,13 @@ namespace Broadcast.JES
             }
 
             // 플레이어 인스턴스가 생성될 때 슈퍼챗 UI 생성. 단, 내 플레이어 객체는 생성하지 않음.
-            if (superChatUiPrefab != null)
+            if (superChatUiPrefab != null && !photonView.IsMine)
             {
                 Debug.Log("UI 생성");
 
-                // Player UI 생성. 네트워크에 생성하는 것이 아니라, 내 게임 화면에서만 생성합니다.
+                // 슈퍼챗 UI 생성. 네트워크에 생성하는 것이 아니라, 내 게임 화면에서만 생성합니다.
                 _superChatUiGo = Instantiate(superChatUiPrefab);
-                // PlayerUI 인스턴스에 SetTarget(this) 함수를 실행하게 만듭니다. SetTarget(this) 메서드는 이 인스턴스를 타겟으로 설정하게 만듭니다.
+                // 슈퍼챗 인스턴스에 SetTarget(this) 함수를 실행하게 만듭니다. SetTarget(this) 메서드는 이 인스턴스를 타겟으로 설정하게 만듭니다.
                 // 이후 UI 인스턴스는 타겟을 기준으로 화면에 렌더링합니다.
                 _superChatUiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
             }
