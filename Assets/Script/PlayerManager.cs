@@ -75,11 +75,5 @@ namespace Broadcast.JES
                 _superChatUiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
             }
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
