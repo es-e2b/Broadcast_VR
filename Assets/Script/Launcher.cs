@@ -33,6 +33,7 @@ namespace Broadcast.JES
         [SerializeField]
         private GameObject nicknamePanel;
 
+        
         #endregion
 
         #region Private Fields

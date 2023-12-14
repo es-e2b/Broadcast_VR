@@ -14,7 +14,7 @@ public class ButtonSwitch : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         DisableObject();
     }
