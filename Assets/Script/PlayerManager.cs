@@ -1,6 +1,7 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 
 namespace Broadcast.JES
@@ -11,7 +12,8 @@ namespace Broadcast.JES
 
         [Tooltip("내 고유 플레이어 프리팹")]
         public static PlayerManager LocalPlayerInstance;
-        public Camera LocalPlayerCamera;
+        public static Camera currentCamera;
+        public static GameObject LocalPlayerCamera;
 
         #endregion
         #region Private Fields
@@ -26,6 +28,8 @@ namespace Broadcast.JES
 
         GameObject _superChatUiGo;
         #endregion
+
+
 
         [PunRPC]
         public void SuperChat(string text, int sender)
@@ -43,9 +47,12 @@ namespace Broadcast.JES
             // 플레이어 인스턴스가 내 인스턴스일 때, LoaclPlayerInstance 변수에 저장 및 카메라 렌더링 순위+
             if (photonView.IsMine)
             {
+                LocalPlayerCamera = gameObject.GetNamedChild("Main Camera");
                 LocalPlayerInstance = this;
                 ChatManager.LocalPlayerInstance = this;
-                LocalPlayerCamera.depth = 1;
+                currentCamera = LocalPlayerCamera.GetComponent<Camera>();
+                currentCamera.enabled = true;
+                CameraManager.Cameras.Add(LocalPlayerCamera);
             }
         }
         #endregion

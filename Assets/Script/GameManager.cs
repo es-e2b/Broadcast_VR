@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using System;
 
 namespace Broadcast.JES
 {
@@ -15,6 +16,14 @@ namespace Broadcast.JES
         [Tooltip("플레이어 프리팹")]
         public GameObject StreamerPrefab;
         public GameObject ViewerPrefab;
+        #endregion
+
+        #region Priavte Fields
+        [SerializeField]
+        private Vector3 StreamerPosition = new Vector3(0f, 1.0f, 0f);
+
+        [SerializeField]
+        private Vector3 ViewerPosition = new Vector3(0f, 1.0f, 2.0f);
         #endregion
         #region Photon CallBacks
 
@@ -79,9 +88,9 @@ namespace Broadcast.JES
         public void createLocalPlayer()
         {
             if (PhotonNetwork.IsMasterClient)
-                PhotonNetwork.Instantiate(this.StreamerPrefab.name, new Vector3(0f, 2.5f, 12.5f), Quaternion.identity, 0);
+                PhotonNetwork.Instantiate(this.StreamerPrefab.name, StreamerPosition, Quaternion.Euler(0f, 0f, 0f), 0);
             else
-                PhotonNetwork.Instantiate(this.ViewerPrefab.name, new Vector3(0f, 7.5f, 22.5f), Quaternion.Euler(0f, 180f, 0f), 0);
+                PhotonNetwork.Instantiate(this.ViewerPrefab.name, ViewerPosition, Quaternion.Euler(0f, 180f, 0f), 0);
         }
         #endregion
         #region Public Methods
