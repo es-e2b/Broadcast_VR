@@ -44,8 +44,6 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - SuperChat
-  - UnablePhotonTransformView
-  - EnablePhotonTransformView
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -1,10 +1,11 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Broadcast.JES
 {
-    public class FirstPersonCamera : MonoBehaviour
+    public class FirstPersonCamera : MonoBehaviourPunCallbacks
     {
         public float sensitivity = 50f;  // 마우스 감도
         public Transform playerBody;    // 플레이어의 Transform
@@ -19,7 +20,7 @@ namespace Broadcast.JES
 
         void Update()
         {
-            if(Input.GetKeyUp(KeyCode.Escape))
+            if(transform.parent.GetComponent<PhotonView>().IsMine && Input.GetKeyUp(KeyCode.Escape))
             {
                 reverseState();
 
