@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: 81d9debcbaf99472bb70ffc2f99cb23f
-timeCreated: 1540904568
-licenseType: Store
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - speakerPrefab: {fileID: 5947097724825286896, guid: 74d3f5789ce48c041b35b67b9f1e8064, type: 3}
+  - primaryRecorder: {instanceID: 0}
   executionOrder: 0
   icon: {fileID: 2800000, guid: dd940d333aeeaa048842e87b9b259188, type: 3}
   userData: 

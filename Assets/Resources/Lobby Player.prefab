@@ -1196,7 +1196,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Boradcast.JES.Launcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: Broadcast.JES.Launcher, Assembly-CSharp
         m_MethodName: JoinBroadCasting
         m_Mode: 1
         m_Arguments:
@@ -1329,7 +1329,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Boradcast.JES.Launcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: Broadcast.JES.Launcher, Assembly-CSharp
         m_MethodName: StartBroadcasting
         m_Mode: 1
         m_Arguments:
@@ -2603,7 +2603,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Boradcast.JES.Launcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: Broadcast.JES.Launcher, Assembly-CSharp
         m_MethodName: OpenCreateCanvas
         m_Mode: 1
         m_Arguments:
@@ -3951,7 +3951,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Boradcast.JES.Launcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: Broadcast.JES.Launcher, Assembly-CSharp
         m_MethodName: JoinRandomBroadcasting
         m_Mode: 1
         m_Arguments:
@@ -4209,7 +4209,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Boradcast.JES.Launcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: Broadcast.JES.Launcher, Assembly-CSharp
         m_MethodName: OpenJoinCanvas
         m_Mode: 1
         m_Arguments:
@@ -4483,7 +4483,7 @@ GameObject:
   - component: {fileID: 33560071296230754}
   - component: {fileID: 6492154118312421799}
   - component: {fileID: 2919137005196246884}
-  - component: {fileID: 5292170449545530532}
+  - component: {fileID: 3669333899969925503}
   m_Layer: 0
   m_Name: Lobby Player
   m_TagString: Player
@@ -4698,7 +4698,7 @@ MonoBehaviour:
     LayerIndex: 0
   - SynchronizeType: 0
     LayerIndex: 1
---- !u!114 &5292170449545530532
+--- !u!114 &3669333899969925503
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
