@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using Unity.XR.CoreUtils;
+using Photon.Voice.PUN;
 
 namespace Broadcast.JES
 {
@@ -75,7 +76,7 @@ namespace Broadcast.JES
             if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
             {
                 Debug.Log("방송 룸을 생성하였습니다.");
-
+                PunVoiceClient.Instance.AutoConnectAndJoin = true;
                 PhotonNetwork.LoadLevel("Room");
             }
             else
