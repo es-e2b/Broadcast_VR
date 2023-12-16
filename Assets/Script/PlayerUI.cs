@@ -73,7 +73,7 @@ namespace Broadcast.JES
 
                 // LocalPlayerCamera는 내 플레이어 인스턴스의 카메라입니다. 이 카메라에 UI를 띄웁니다.
                 // WorldToScreenPoint() 함수는 현재 UI의 포지션을 카메라에 렌더링 해주는 부분입니다.
-                this.transform.position = PlayerManager.LocalPlayerInstance.LocalPlayerCamera.WorldToScreenPoint(targetPosition) + screenOffset;
+                this.transform.position = PlayerManager.currentCamera.WorldToScreenPoint(targetPosition) + screenOffset;
             }
 
         }
