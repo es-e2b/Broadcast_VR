@@ -16,6 +16,8 @@ namespace Broadcast.JES
         public InputField ChatInput;
         public GameObject chatPanel;
         public static PlayerManager LocalPlayerInstance;
+        public GameObject closeButton;
+        public GameObject openButton;
         #endregion
         #region Private Fields
         private bool chatVisible = false;
@@ -25,6 +27,8 @@ namespace Broadcast.JES
         {
             instance = this;
             chatPanel.SetActive(chatVisible);
+            closeButton.SetActive(chatVisible);
+            openButton.SetActive(!chatVisible);
 
             for (int i = 0; i < ChatText.Length; i++)
                 ChatText[i].text = "";
@@ -32,16 +36,14 @@ namespace Broadcast.JES
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                chatVisible = !chatVisible;
-                chatPanel.SetActive(chatVisible);
-            }
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 if (chatVisible == false)
+                {
+                    chatUIControl();
                     return;
+                }
 
                 string text=ChatInput.text;
                 if (text.Substring(0,1).Equals("/"))
@@ -118,6 +120,16 @@ namespace Broadcast.JES
                 ChatText[0].text = msg;
         }
 
+        #endregion
+        #region Public Method
+        public void chatUIControl()
+        {
+            Debug.Log("tab button");
+            chatVisible = !chatVisible;
+            chatPanel.SetActive(chatVisible);
+            closeButton.SetActive(chatVisible);
+            openButton.SetActive(!chatVisible);
+        }
         #endregion
     }
 }
