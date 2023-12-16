@@ -20,6 +20,8 @@ namespace Broadcast.JES
         private void Start()
         {
             playerTransform=this.gameObject.transform;
+            if (photonView.IsMine)
+                Debug.Log("Cghec");
         }
         void Update()
         {
@@ -28,7 +30,10 @@ namespace Broadcast.JES
                 // 수평 및 수직 입력을 받아 이동 방향을 계산
                 float horizontalInput = Input.GetAxis("Horizontal");
                 float verticalInput = Input.GetAxis("Vertical");
-                Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput);
+                float upInput = Input.GetAxis("Jump");
+                float downInput = -Input.GetAxis("Sprint");
+                Vector3 updown = new Vector3(0f, upInput+downInput, 0f);
+                Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput)+updown;
 
                 // 이동 방향에 속도를 곱하여 이동 벡터 생성
                 Vector3 moveDirection = movement.normalized * speed * Time.deltaTime;
