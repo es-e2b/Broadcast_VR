@@ -43,6 +43,14 @@ namespace Broadcast.JES
 
         #endregion
 
+        #region MonoBehaviorCallbacks
+
+        //private string userNickname = "123456";
+        //private void start()
+        //{
+        //    PhotonNetwork.NickName = userNickname;
+        //}
+        #endregion
         #region Photon CallBacks
         /*
         public override void OnConnectedToMaster()
@@ -166,6 +174,7 @@ namespace Broadcast.JES
             // 내 닉네임 설정
             string nickname = nicknamePanel.GetComponent<InputField>().text;
             PhotonNetwork.NickName = nickname;
+
 
             // 방송 제목 리턴
             string roomTitle = titlePanel.GetComponent<InputField>().text;
